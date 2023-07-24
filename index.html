@@ -11,12 +11,25 @@
 				"ask": "https://www.ask.com/web"
 			};
 		// TODO: create a handler
-		function setSearchEngine(event) {
-			console.log("this function ran!");
-			let chosenSelection = document.querySelector('input[name=engine]:checked').value;
-			let chosenURL = actions[chosenSelection];
-			console.log(chosenURL);
-			document.getElementById("searchForm").setAttribute("action", chosenURL);
+		function setSearchEngine() {
+			// console.log("this function ran!");
+			 const chosenSelection = document.querySelector('input[name=engine]:checked');
+			 const query = document.getElementById("q");
+			 const form = document.getElementById('searchForm');
+
+			 //bonus mission #1. Add Validation
+			
+			 //option 1 Use Window Alert
+
+
+			 //option 2 Use an error box on the page with text
+
+
+			 let chosenURL = actions[chosenSelection.value];
+			form.action =chosenURL;
+			 // console.log(chosenURL);
+			// document.getElementById("searchForm").setAttribute("action", chosenURL);
+			// event.preventDefault();
 		}
 		
     window.addEventListener("load", function(){
@@ -25,6 +38,7 @@
 		const form = document.querySelector('form');
 
       // Reference the handler function — do not call it
+	  // The Listener waits for it to happen.. 
       form.addEventListener('submit', setSearchEngine);
         // TODO: register the handler
     });
@@ -34,13 +48,13 @@
 <body>
 	
 
-	<form id="searchForm" method="GET">
+	<form id="searchForm" target ="_blank">
 		<input type="text" name="q">
-		<label>Google<input type = "radio" name="engine" value="google"></label>
-		<label>Duck Duck Go<input type = "radio" name="engine" value="duckDuckGo"></label>
-		<label>Bing<input type = "radio" name="engine" value="bing"></label>
-		<label>Ask<input type = "radio" name="engine" value="ask"></label>
-		<button type="submit">Go!</button>
+		<label><input type = "radio" name="engine" value="google">Google</label>
+		<label><input type = "radio" name="engine" value="duckDuckGo">Duck Duck Go</label>
+		<label><input type = "radio" name="engine" value="bing">Bing</label>
+		<label><input type = "radio" name="engine" value="ask">Ask</label>
+		<button id="submit" value="Go!">Go!</button>
     <!-- TODO: add form elements -->
 	</form>
 
